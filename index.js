@@ -6,7 +6,14 @@ const app = express();
 const port = 8000;
 
 // Middleware
-app.use(cors());
+// app.use(cors());
+app.use(cors({
+  origin: '*', // Allow all origins
+  methods: ['GET', 'POST'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
+
+
 app.use(express.json());
 
 app.get('/api/allDataForCountry', async (req, res) => {
